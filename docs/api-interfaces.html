@@ -11,6 +11,8 @@
     h2 { margin-top: 32px; font-size: 22px; }
     .notice { padding: 16px 20px; border-left: 4px solid #2867b2; background: #fff; }
     table { width: 100%; border-collapse: collapse; margin-top: 16px; background: #fff; }
+    .table-scroll { overflow-x: auto; }
+    .table-scroll table { min-width: 800px; }
     th, td { padding: 12px; border: 1px solid #dfe3e8; text-align: left; vertical-align: top; }
     th { background: #eef1f4; }
     code { padding: 2px 5px; background: #eef1f4; border-radius: 4px; }
@@ -27,10 +29,12 @@
     </div>
 
     <h2>接口目录</h2>
+    <div class="table-scroll" role="region" aria-label="接口目录表" tabindex="0">
     <table>
       <thead><tr><th>接口名称</th><th>后端服务</th><th>前端模块</th><th>方式与地址</th><th>状态</th><th>更新时间</th></tr></thead>
       <tbody><tr><td>示例接口（复制后删除）</td><td>service-example</td><td>page-example</td><td><code>GET /api/example/{id}</code></td><td>待人工验证</td><td>YYYY-MM-DD</td></tr></tbody>
     </table>
+    </div>
 
     <h2>示例接口内容（复制后删除）</h2>
     <table>
@@ -50,7 +54,7 @@
 }</pre>
   </main>
   <!-- project-version:start -->
-  <footer style="max-width:1100px;margin:0 auto;padding:16px 20px 32px;color:#555;text-align:center">版本 0.1.1</footer>
+  <footer style="max-width:1100px;margin:0 auto;padding:16px 20px 32px;color:#555;text-align:center">版本 0.1.2</footer>
   <!-- project-version:end -->
 </body>
 </html>

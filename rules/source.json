@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "https://github.com/extendmachine/AI_rules.git",
   "branch": "main",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "updated_at": "2026-11-10",
   "check_interval_days": 7,
   "managed_files": [

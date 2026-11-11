@@ -1,6 +1,6 @@
 # AI 项目规范
 
-版本：0.1.1。用于约束 Codex、Claude Code 和其他 AI 的项目开发行为。
+版本：0.1.2。用于约束 Codex、Claude Code 和其他 AI 的项目开发行为。
 官方规范仓库：[extendmachine/AI_rules](https://github.com/extendmachine/AI_rules)，Git 地址：`https://github.com/extendmachine/AI_rules.git`。
 
 整个目录就是项目底座，无需分发脚本或另建 templates。公共规范位于 rules，AI 从 AGENTS.md/CLAUDE.md 进入 rules/README.md。
