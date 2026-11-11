@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>前后端接口审阅文档</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #222; background: #f6f7f9; line-height: 1.6; }
+    main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 64px; }
+    h1 { margin: 0 0 8px; font-size: 32px; }
+    h2 { margin-top: 32px; font-size: 22px; }
+    .notice { padding: 16px 20px; border-left: 4px solid #2867b2; background: #fff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; background: #fff; }
+    th, td { padding: 12px; border: 1px solid #dfe3e8; text-align: left; vertical-align: top; }
+    th { background: #eef1f4; }
+    code { padding: 2px 5px; background: #eef1f4; border-radius: 4px; }
+    pre { overflow: auto; padding: 16px; background: #20242a; color: #f5f7fa; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>前后端接口审阅文档</h1>
+    <p>本文件是项目接口的人工审阅入口。实际项目引入规范后，请按后端微服务分组维护所有前后端接口。</p>
+
+    <div class="notice">
+      当前为规范模板，尚未登记实际业务接口。接口变更时，应先更新微服务内的 <code>CONTRACT.md</code>，再同步本文件。
+    </div>
+
+    <h2>接口目录</h2>
+    <table>
+      <thead><tr><th>接口名称</th><th>后端服务</th><th>前端模块</th><th>方式与地址</th><th>状态</th><th>更新时间</th></tr></thead>
+      <tbody><tr><td>示例接口（复制后删除）</td><td>service-example</td><td>page-example</td><td><code>GET /api/example/{id}</code></td><td>待人工验证</td><td>YYYY-MM-DD</td></tr></tbody>
+    </table>
+
+    <h2>示例接口内容（复制后删除）</h2>
+    <table>
+      <tbody>
+        <tr><th>唯一标识</th><td>service-example.get-example</td></tr>
+        <tr><th>用途</th><td>说明该接口解决的业务问题。</td></tr>
+        <tr><th>权限</th><td>说明身份验证和权限要求，不填写真实凭据。</td></tr>
+        <tr><th>请求参数</th><td>id：string，必填，示例数据编号。</td></tr>
+        <tr><th>成功返回</th><td>200；记录返回字段名称、类型和含义。</td></tr>
+        <tr><th>失败返回</th><td>404：记录不存在；说明前端处理方式。</td></tr>
+        <tr><th>契约位置</th><td><code>services/service-example/CONTRACT.md</code></td></tr>
+      </tbody>
+    </table>
+    <pre>{
+  "id": "example-001",
+  "name": "脱敏示例内容"
+}</pre>
+  </main>
+  <!-- project-version:start -->
+  <footer style="max-width:1100px;margin:0 auto;padding:16px 20px 32px;color:#555;text-align:center">版本 0.1.0</footer>
+  <!-- project-version:end -->
+</body>
+</html>
+

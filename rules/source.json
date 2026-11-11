@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/extendmachine/AI_rules.git",
+  "branch": "main",
+  "version": "0.1.0",
+  "updated_at": "2026-11-10",
+  "check_interval_days": 7,
+  "managed_files": [
+    "rules/README.md",
+    "rules/source.json",
+    "rules/01-microservice-architecture.md",
+    "rules/02-git-review-before-commit.md",
+    "rules/03-logging-structure.md",
+    "rules/04-git-branching-by-service.md",
+    "rules/05-local-secrets-security.md",
+    "rules/06-goal-todo-docs.md",
+    "rules/07-service-contracts.md",
+    "rules/08-dependencies-error-logs.md",
+    "rules/09-human-validation-and-scope.md",
+    "rules/10-database-deploy-rollback.md",
+    "rules/11-environment-isolation.md",
+    "rules/12-frontend-backend-api-docs.md",
+    "rules/13-codex-claude-shared-instructions.md",
+    "rules/14-multi-ai-task-worktree-handoff.md",
+    "rules/15-official-links-and-source-traceability.md",
+    "rules/16-project-template-bootstrap.md",
+    "rules/17-version-tracking.md",
+    "rules/18-rules-update.md"
+  ],
+  "entry_files": ["AGENTS.md", "CLAUDE.md"],
+  "retired_files": [
+    "rules/17-clawtask-project-packaging.md",
+    "rules/clawtask-package-skill-v2.zip"
+  ]
+}

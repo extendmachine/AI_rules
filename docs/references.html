@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>官方资料与网址审阅</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #222; background: #f6f7f9; line-height: 1.6; }
+    main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 64px; }
+    h1 { margin: 0 0 8px; font-size: 32px; }
+    .notice { padding: 16px 20px; border-left: 4px solid #2867b2; background: #fff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 24px; background: #fff; }
+    th, td { padding: 12px; border: 1px solid #dfe3e8; text-align: left; vertical-align: top; }
+    th { background: #eef1f4; }
+    code { padding: 2px 5px; background: #eef1f4; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>官方资料与网址审阅</h1>
+    <p>本文件集中展示项目使用的第三方平台官方入口、接口文档、公钥证书配置页和版本资料。</p>
+    <div class="notice">
+      当前为规范模板。实际项目复制后，应从各微服务的 <code>REFERENCES.md</code> 同步人工审阅内容，不得填写真实私钥、密码或 token。
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>资料名称</th>
+          <th>官方网址</th>
+          <th>用途</th>
+          <th>适用服务/版本</th>
+          <th>登录要求</th>
+          <th>核对日期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI 项目公共规范</td>
+          <td><a href="https://github.com/extendmachine/AI_rules">extendmachine/AI_rules</a></td>
+          <td>规范来源与版本更新；固定 main 来源，不是业务项目远程。</td>
+          <td>公共规范 0.1.0</td>
+          <td>公开读取无需登录，推送需仓库写权限。</td>
+          <td>2026-11-10</td>
+        </tr>
+        <tr>
+          <td>示例资料（复制后删除）</td>
+          <td><a href="https://example.com/">https://example.com/</a></td>
+          <td>说明该页面用于什么操作。</td>
+          <td>service-example</td>
+          <td>说明是否需要登录或权限。</td>
+          <td>YYYY-MM-DD</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <!-- project-version:start -->
+  <footer style="max-width:1100px;margin:0 auto;padding:16px 20px 32px;color:#555;text-align:center">版本 0.1.0</footer>
+  <!-- project-version:end -->
+</body>
+</html>

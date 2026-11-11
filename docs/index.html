@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 项目规范说明</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #222;
+      background: #f6f7f9;
+      line-height: 1.7;
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+    }
+    h2 {
+      margin-top: 32px;
+      font-size: 22px;
+    }
+    section {
+      padding: 24px;
+      margin-top: 18px;
+      background: #fff;
+      border: 1px solid #e6e8ec;
+      border-radius: 8px;
+    }
+    code {
+      padding: 2px 6px;
+      background: #eef1f4;
+      border-radius: 4px;
+      overflow-wrap: anywhere;
+    }
+    ul {
+      padding-left: 22px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AI 项目规范</h1>
+    <p>公共规范版本 0.1.0，更新于 2026-11-10。本页供人审阅，AI 的执行依据是 rules 中的公共规范和项目 Markdown 记录。</p>
+    <section>
+      <h2>开发、测试、发布</h2>
+      <ul>
+        <li><code>main</code>：正常开发、修复和文档维护，AI 可以自动提交和推送，不混入测试专用代码。</li>
+        <li><code>test_main</code>：固定 main 提交后进行隔离测试；测试接口、脚本与虚构数据只在此分支。</li>
+        <li><code>release</code>：人工确认具体版本与提交后发布，使用 <code>v0.1.0</code> 等不可变版本标签。</li>
+        <li>默认只允许三个分支，额外分支须人工授权；不自动删除旧分支、强推或覆盖他人改动。</li>
+        <li>测试必须隔离数据库、端口、目录和凭据；测试分支不整体合回 main 或 release。</li>
+        <li>main 由一个主执行 AI 写入和整合；其他 AI 可只读分析，test_main 可在独立工作区验证固定候选。</li>
+      </ul>
+    </section>
+    <section>
+      <h2>自主执行与项目习惯</h2>
+      <ul>
+        <li>AI 按任务读取目标、当前进度、活动任务和相关规则的关键部分，不要求每次修改前全文重读。</li>
+        <li>接口与常规实现问题由 AI 根据契约和源码自主判断；缺少关键业务信息或超出授权时才询问。</li>
+        <li>每个模块服务独立目录，服务说明、接口、启动、依赖和部署方式使用服务内 Markdown。</li>
+        <li>人类说明集中在 docs 的 HTML；接口与官方来源提供可审阅记录。</li>
+        <li>日志进入 <code>logs/&lt;service&gt;/</code>，按天记录，普通日志保留 30 天。</li>
+        <li>密钥等控制信息存入 <code>local-secrets/</code>，总账为 <code>local-secrets/notes/project-secrets.json</code>，不回显、不提交。</li>
+        <li>用户在对话中提供项目凭据时由 AI 代存；客户资料的现有业务数据政策保持不变。</li>
+        <li>环境隔离继续按规则 11 执行；人工 release 确认、生产操作与危险操作授权仍然有效。</li>
+      </ul>
+    </section>
+    <section>
+      <h2>版本追踪</h2>
+      <p>根 <code>VERSION</code> 保存产品版本，<code>CHANGELOG.md</code> 记录变更；main 候选、test_main 测试提交和 release 标签分别追踪。页面底部显示当前实际构建版本，而不是远程仓库最新版本。</p>
+      <p>本规范的静态文档从 VERSION 自动同步底部版本，可直接打开预览。当前 0.1.0 为开发候选，仓库上传不等于 release 发布或生产部署。</p>
+    </section>
+    <section>
+      <h2>分发与更新</h2>
+      <p>规范来源：<a href="https://github.com/extendmachine/AI_rules">extendmachine/AI_rules</a>。整个规范目录是项目底座，不创建第二套 templates。用户要求引入时，AI 按根 README 的 12 步复制、盘点、恢复项目事实并完成初始化。</p>
+      <p>有修改任务执行时，默认每 7 天检查一次公共规范更新。保护项目专用要求、目标、进度、业务版本与真实数据；无网络或冲突时保留当前规则，不停止无关工作，不创建后台定时任务。</p>
+      <p>Git clone 不含被忽略的 logs 和 local-secrets，AI 会按规则在目标本地补建安全骨架。旧 rules.zip 不参与分发；旧平台打包方案及品牌标识已停用。</p>
+    </section>
+    <section>
+      <h2>文件入口</h2>
+      <ul>
+        <li><code>AGENTS.md</code>、<code>CLAUDE.md</code>：轻量入口。</li>
+        <li><code>rules/README.md</code>：控制规范与按需索引。</li>
+        <li><code>rules/source.json</code>：公共规范版本、GitHub 来源和更新清单。</li>
+        <li><code>FINAL_GOAL.md</code>、<code>TODO.md</code>、<code>AI_TASKS.md</code>：目标、进度与活动任务。</li>
+        <li><code>VERSION</code>、<code>CHANGELOG.md</code>：产品版本与变更记录。</li>
+        <li><a href="api-interfaces.html">前后端接口审阅</a>；<a href="references.html">官方资料与网址</a>。</li>
+      </ul>
+    </section>
+  </main>
+  <!-- project-version:start -->
+  <footer style="max-width:1100px;margin:0 auto;padding:16px 20px 32px;color:#555;text-align:center">版本 0.1.0</footer>
+  <!-- project-version:end -->
+</body>
+</html>
