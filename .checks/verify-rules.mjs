@@ -18,7 +18,7 @@ test('test-only checks run on test_main without business differences', () => {
 });
 
 test('manifest matches the complete public rules directory', () => {
-  const actual = readdirSync(join(root, 'rules')).filter((f) => !f.startsWith('.')).map((f) => `rules/${f}`).sort();
+  const actual = readdirSync(join(root, 'rules'), { withFileTypes: true }).filter((f) => f.isFile() && !f.name.startsWith('.')).map((f) => `rules/${f.name}`).sort();
   assert.deepEqual(actual, [...manifest.managed_files].sort());
   assert.equal(new Set(manifest.managed_files).size, manifest.managed_files.length);
   assert.ok(manifest.managed_files.every((p) => p.startsWith('rules/') && !p.includes('..')));
@@ -26,6 +26,26 @@ test('manifest matches the complete public rules directory', () => {
   assert.equal(manifest.branch, 'main');
   assert.equal(manifest.check_interval_days, 7);
   for (const p of manifest.retired_files) assert.equal(existsSync(join(root, p)), false);
+});
+
+test('project rules are discoverable and excluded from every public update list', () => {
+  assert.deepEqual(manifest.protected_paths, ['rules/project/']);
+  const protectedRoot = resolve(root, 'rules/project');
+  const publicPaths = [...manifest.managed_files, ...manifest.retired_files, ...manifest.entry_files];
+  for (const name of publicPaths) {
+    const path = resolve(root, name);
+    assert.ok(path !== protectedRoot && !path.startsWith(`${protectedRoot}/`) && !protectedRoot.startsWith(`${path}/`), name);
+  }
+  for (const name of ['AGENTS.md', 'rules/README.md', 'rules/06-goal-todo-docs.md', 'rules/18-rules-update.md']) {
+    assert.ok(read(name).includes('rules/project/README.md'), name);
+  }
+  for (const name of ['README.md', 'rules/16-project-template-bootstrap.md', 'rules/project/README.md']) {
+    assert.ok(read(name).includes('索引缺失'), name);
+  }
+  assert.ok(read('rules/18-rules-update.md').includes('不能通过移除 protected_paths 字段取消保护'));
+  assert.ok(read('rules/18-rules-update.md').includes('内容哈希'));
+  assert.ok(read('rules/06-goal-todo-docs.md').includes('正常维护并提交项目 Git'));
+  assert.equal(spawnSync('git', ['check-ignore', '-q', 'rules/project/README.md'], { cwd: root }).status, 1);
 });
 
 test('version, routing and source metadata agree', () => {
@@ -40,7 +60,7 @@ test('version, routing and source metadata agree', () => {
 });
 
 test('Markdown fences and HTML local links are valid', () => {
-  const files = [...manifest.managed_files.filter((p) => p.endsWith('.md')), 'AGENTS.md', 'CLAUDE.md', 'README.md', 'FINAL_GOAL.md', 'TODO.md', 'AI_TASKS.md'];
+  const files = [...manifest.managed_files.filter((p) => p.endsWith('.md')), 'rules/project/README.md', 'AGENTS.md', 'CLAUDE.md', 'README.md', 'FINAL_GOAL.md', 'TODO.md', 'AI_TASKS.md'];
   for (const name of files) assert.equal((read(name).match(/^\s*```/gm) || []).length % 2, 0, name);
   for (const name of ['index.html', 'api-interfaces.html', 'references.html']) {
     const html = read(`docs/${name}`);
