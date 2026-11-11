@@ -1,6 +1,6 @@
 # AI 项目控制规范与规则索引
 
-规范版本：`0.1.0`
+规范版本：`0.1.1`
 更新日期：2026-11-10
 规范来源：https://github.com/extendmachine/AI_rules.git
 更新策略：规则 18；来源与受控文件清单见 `rules/source.json`。
